@@ -14,7 +14,7 @@ permita guardar en la base de datos una nueva actuación.), ya que no entiendo l
   
   Tomé los nombre de las rutas y etc como sugerencias, no como consignas.
 
-  Al trabajar de manera individual, descuide el orden (ya que soy el unico trabajando no me preocupe por hacer un sistema prolijo).
+  Al trabajar de manera individual, descuide el orden (ya que soy el unico trabajando no me preocupe por hacer un sistema prolijo)y comprendi el problema de no llevar un sistema.
   
   Por demas esta decir, que aunque sea una entrega incompleta, disfrute mucho quemarme la cabeza haciendo este trabajo.
   
