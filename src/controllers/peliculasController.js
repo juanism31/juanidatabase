@@ -86,6 +86,7 @@ module.exports = {
        
     },
     change: async(req,res)=>{
+        try {
         let errors = validationResult(req)
         if (errors.isEmpty()){
         const movieId = req.params.id
@@ -99,14 +100,34 @@ module.exports = {
         let oldValues = req.body
         res.render("update", {toEdit,generos,actores,registerErrors:errors.errors, oldValues})
     }
-
+    }catch(error){
+        console.log(error)
+    }
+    
+    
     },
-    delete:async(req,res)=>{
-        Movie.destroy({
-            where:{id: req.params.id}
-        })
-        res.redirect('/')
+    // delete:async(req,res)=>{
+    //     Movie.destroy({
+    //         where:{id: req.params.id}
+    //     })
+    //     console.log('viajo por post')
+    //     res.redirect('/peliculas')
 
+    // },
+    delete: async (req, res) => {
+        try {
+            const movieId = req.params.id; 
+            const deleteMovie = await Movie.findByPk(movieId,{include: {all: true}});
+            await deleteMovie.removeActores(deleteMovie.actores);
+            deleteMovie.destroy({
+                where: {
+                    id: movieId
+                }
+            })             
+            res.redirect("/peliculas")  
+        }catch(error){
+            console.log(error)
+        }
     },
 
 
@@ -138,5 +159,3 @@ module.exports = {
     
 }
       
-    
-
