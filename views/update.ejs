@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
+<%-include('./partials/head.ejs')%>
+
+    
+  </head>
+  <%-include('./partials/header.ejs')%>
+    <body>
+  <main>
+    <% if(typeof registerErrors != "undefined") {%> 
+      <ul>
+          <% registerErrors.forEach(error => { %> 
+              <li>· <%= error.msg %> </li>
+          <% }); %> 
+      </ul>
+    <% } %> 
+
+
+    <form action="/update/<%=toEdit.id %>" method= "POST"><br>
+    <label for="">Title</label><br>
+    <input type="text" name="title" value="<%= typeof oldValues != "undefined" ? oldValues.title : toEdit.title %>" required><br>
+    <label for="">Rating</label><br>
+    <input type="text" name= "rating" value="<%=typeof oldValues != "undefined" ? oldValues.rating :toEdit.rating %>"required><br>
+    <label for="">Length</label><br>
+    <input type="text" name="length" value="<%=typeof oldValues != "undefined" ? oldValues.length :toEdit.length %>"required><br>
+    <label for="">Awards</label><br>
+    <input type="text" name="awards" value="<%=typeof oldValues != "undefined" ? oldValues.awards :toEdit.awards %>"required><br>
+    <label for="">Genre</label><br>
+    <select name="genre_id" required>
+    <% generos.forEach(genero => { %>
+      <% if(toEdit.GenreId === genero.id){ %> 
+      <option value=  "<%=genero.id%>" selected><%=genero.name  %> </option>
+    <% }else{ %>
+      <option value=  "<%=genero.id%>" ><%=genero.name  %> </option>
+    <% } %> 
+      <% }) %>
+    </select><br>
+    <label for="">Actors</label><br>
+    <select name="actores" multiple required>
+    <% actores.forEach(actor => { %>
+      <% if(toEdit.actores.some(actorPelicula => actorPelicula.id == actor.id)){ %> 
+      <option value="<%=actor.id%>" selected><%=actor.first_name%> <%= actor.last_name  %> </option>
+      <% }else{ %> 
+        <option value="<%=actor.id%>"><%=actor.first_name%> <%= actor.last_name  %> </option>
+      <% } %> 
+    <% }) %>
+    </select><br>
+    <label for="">Release Date</label>
+    <input type="date"name="release_date" value="<%=toEdit.release_date %>"required><br>
+    <button type="submit">Cambiar!</button>
+    </form>
+  </main>
+  
+</body>
+</html>

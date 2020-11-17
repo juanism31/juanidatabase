@@ -1,0 +1,59 @@
+*{
+  font-family: sans-serif;
+}
+.titulo_head{
+ 
+  width: 100%;
+  padding: 0;
+  height:25vh;
+  text-align: center;
+  font-size: 3vh;
+}
+.buscador{
+  background-color: rgb(69, 255, 62);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-top: 0.8vh;
+  padding-bottom: 0.8vh;
+  justify-content: space-around;
+  
+  font-size: 3vh
+}
+.input-buscador{
+  width: 50vh;
+  display: flex;
+
+}
+body{
+  min-height: 50vh;
+}
+body{
+  background-color: rgba(212, 212, 212, 0.863);
+}
+.linkpeli{
+  text-decoration: none;
+  color:black
+
+}
+.linkpeli:hover{
+  color:rgb(102, 102, 102)
+
+}
+.nombrepeli{
+  font-size: 7vh;
+}
+.botones{
+  display: flex;
+  flex-direction: row;
+}
+.boton{
+  size: 3vh;
+}
+.dondeActua{
+  font-size: 3vh;
+}
+.titulos{
+  align-self: center;
+  justify-content: center;
+}

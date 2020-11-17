@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
+<%-include('./partials/head.ejs')%>
+
+    
+  </head>
+  <%-include('./partials/header.ejs')%>
+    <body>
+   
+
+  
+
+<% if(typeof encontrados === 'undefined'){%>
+  <h2 class= titulos>Recomendados!</h2>  
+  
+  <section class=pelicula>
+    <% peliculas.forEach(pelicula => { %>
+     <a class=linkpeli href="/pelicula/<%=pelicula.id%>"><h3><%=pelicula.title %></h3></a>
+    
+  </section>
+ 
+
+<% })%>
+<% }else if (encontrados != null){ %> 
+  <h2 class= titulos>Resultados!</h2>  
+    <section>
+      <% encontrados.forEach(encontrado => { %>
+      <a class=linkpeli href="/pelicula/<%=encontrado.id%>"><h3><%=encontrado.title %></h3></a>
+
+   </section> 
+  <% }) %> 
+   <% }else{%>
+    <p>No encontramos tu pelicula!</p>
+   <%}%>
+  </body>
+  
+</html>

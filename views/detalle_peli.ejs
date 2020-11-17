@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<%-include('./partials/head.ejs')%>
+<body>
+    <section  class="contenedorApp">
+
+    <%-include('./partials/header.ejs')%>
+</section>
+    <section>
+     
+       <h3 class="nombrepeli"><%=pelicula.title %></h3>
+
+       <% if(pelicula.GenreId!=null){ %> 
+       <p><a class=linkpeli href="../generos/<%=pelicula.Genre.id%>"><%= pelicula.Genre.name%></a> </p>
+       <%}else{%>
+        <p>Esta pelicula no tiene Genero</p>
+       <% } %>  
+       <p>Rating: <%=pelicula.rating != null? pelicula.rating:"no tenemos esta informacion de momento" %> </p>
+       <p>Premios: <%=pelicula.awards != null? pelicula.awards:"no tenemos esta informacion de momento" %> </p>
+       <p>Duración: <%= pelicula.length != null? pelicula.length +" minutos": "no tenemos esta informacion de momento" %> </p>
+       <p>Fecha de estreno: <%= pelicula.release_date!= null? pelicula.release_date:"no tenemos esta informacion de momento" %> </p>
+        <section>
+          <li>Actores:
+       <% pelicula.actores.forEach(actor => { %>
+        
+        <ul><a class=linkpeli href="../actores/<%=actor.id%>">-<%= actor.first_name %> <%=actor.last_name %>  </a></ul>
+
+        
+       <% }) %>
+      </li>
+      </section>
+      <section  class= botones>
+       <a href="/update/<%=pelicula.id%>"><button type="button">Modificar</button></a>
+       <form action="/borrar/<%=pelicula.id%>" method="post"><button  type='submit' >Eliminar</button></form>
+      </section>
+    </section>
+  </body>
+</html>

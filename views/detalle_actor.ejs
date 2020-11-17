@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<%-include('./partials/head.ejs')%>
+<body>
+    <section  class="contenedorApp">
+
+    <%-include('./partials/header.ejs')%>
+</section>
+    <section>
+      <h2><%= actor.first_name%> <%=actor.last_name %>  </h2>
+      <p class=dondeActua>También actua en:</p>
+      <% actor.Movies.forEach(pelicula => { %>
+      <a class=linkpeli href="/pelicula/<%=pelicula.id %> "> <p><%=pelicula.title %> </p></a>
+       
+      <% }) %> 
+     
+  
+
+    </section>
+  </body>
+</html>

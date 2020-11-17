@@ -1,0 +1,16 @@
+const {sequelize,DataTypes}= require('sequelize')
+
+module.exports = (sequelize,DataTypes) =>{
+    const Genre =sequelize.define('Genre',{
+        name: DataTypes.STRING,
+        ranking: DataTypes.INTEGER,
+        active: DataTypes.INTEGER
+    
+    },{
+        timeStamps: false
+    })
+    Genre.associate = (models=>{
+        Genre.hasMany(models.Movie);
+    })
+    return Genre
+}
